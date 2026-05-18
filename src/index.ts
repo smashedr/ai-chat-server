@@ -12,7 +12,6 @@ import {
 
 console.log(`ai-chat-server: ${process.env.APP_VERSION}`)
 
-// const maxOutputTokens = Number.parseInt(process.env.MAX_TOKENS || '2048') // NOSONAR
 const maxOutputTokens = process.env.MAX_TOKENS
   ? Number.parseInt(process.env.MAX_TOKENS)
   : undefined

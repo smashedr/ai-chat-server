@@ -5,7 +5,7 @@
   "type": "module",
   "main": "src/index.ts",
   "scripts": {
-    "dev": "nodemon --exec tsx ./src/index.ts",
+    "dev": "nodemon --exec tsx src/index.ts",
     "prepare": "npm run build",
     "build": "npx tsc",
     "start": "node dist/index.js",
