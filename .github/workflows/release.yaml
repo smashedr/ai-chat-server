@@ -32,10 +32,6 @@ jobs:
     permissions:
       contents: write
       packages: write
-    inputs:
-      version:
-        description: "Version Tag"
-        required: false
 
   deploy:
     name: "Deploy"
