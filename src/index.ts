@@ -36,7 +36,7 @@ app.post('/', async (req: Request, res: Response) => {
         model: model,
         messages: modelMessages,
         // system: 'Please respond with short, unique, one sentence acknowledgements.',
-        maxOutputTokens: 256,
+        maxOutputTokens: 512,
       })
       writer.merge(result.toUIMessageStream())
     },
