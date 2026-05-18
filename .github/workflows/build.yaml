@@ -14,7 +14,7 @@ on:
   #  types: [published]
 
 env:
-  dev: ${{ inputs.dev || github.event.release.prerelease }}
+  dev: ${{ (inputs.dev || github.event.release.prerelease) && 'dev' || '' }}
 
 jobs:
   build:
@@ -73,7 +73,7 @@ jobs:
         continue-on-error: true
         run: |
           echo "github.ref_name: ${{ github.ref_name }}"
-          echo "tags1: ${{ env.dev && 'dev' || '' }}"
+          echo "tags1: ${{ env.dev }}"
           echo "tags2: ${{ steps.version.outputs.tags }}"
           echo "tags3: ${{ inputs.tags }}"
 
@@ -83,7 +83,7 @@ jobs:
         with:
           images: "ghcr.io/${{ github.repository }}"
           tags: |
-            ${{ env.dev && 'dev' || '' }}
+            ${{ env.dev }}
             ${{ steps.version.outputs.tags }}
             ${{ inputs.tags }}
 
