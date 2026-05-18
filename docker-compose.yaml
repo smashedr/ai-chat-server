@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  nginx:
+    image: ghcr.io/cssnr/docker-nginx-proxy:latest
+    env_file: settings.env
+    environment:
+      SERVICE_NAME: "app"
+      SERVICE_PORT: "3000"
+    depends_on:
+      - app
+    ports:
+      - "80:80"
+
+  app:
+    image: ghcr.io/smashedr/ai-chat-server:latest
+    env_file: settings.env

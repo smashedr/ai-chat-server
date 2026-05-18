@@ -6,6 +6,7 @@ services:
     environment:
       SERVICE_NAME: "app"
       SERVICE_PORT: "3000"
+      BASIC_AUTH: ${BASIC_AUTH}
     deploy:
       replicas: 1
       resources:
