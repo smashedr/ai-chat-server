@@ -10,10 +10,17 @@ import {
   convertToModelMessages,
 } from 'ai'
 
-console.log(`ai-chat-server - version: ${process.env.APP_VERSION}`)
+console.log(`ai-chat-server: ${process.env.APP_VERSION}`)
+
+// const maxOutputTokens = Number.parseInt(process.env.MAX_TOKENS || '2048') // NOSONAR
+const maxOutputTokens = process.env.MAX_TOKENS
+  ? Number.parseInt(process.env.MAX_TOKENS)
+  : undefined
+console.log(`maxOutputTokens: ${maxOutputTokens}`)
+console.log(`system (instructions): ${process.env.INSTRUCTIONS}`)
 
 const app = express()
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3000 // NOSONAR
 
 app.use(express.json())
 app.use(cors())
@@ -35,8 +42,8 @@ app.post('/', async (req: Request, res: Response) => {
       const result = streamText({
         model: model,
         messages: modelMessages,
-        // system: 'Please respond with short, unique, one sentence acknowledgements.',
-        maxOutputTokens: 512,
+        system: process.env.INSTRUCTIONS,
+        maxOutputTokens,
       })
       writer.merge(result.toUIMessageStream())
     },

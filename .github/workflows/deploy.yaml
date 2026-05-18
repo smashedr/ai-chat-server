@@ -66,11 +66,10 @@ jobs:
           name: ${{ env.stack-name }}
           username: ${{ vars.GHCR_USER }}
           password: ${{ secrets.GHCR_PASS }}
-          env_json: |
-            {
-              "VERSION": "${{ env.version }}",
-              "STACK_NAME": "${{ env.stack-name }}",
-              "TRAEFIK_HOST": "${{ env.traefik-host }}",
-              "GOOGLE_GENERATIVE_AI_API_KEY": "${{ secrets.GOOGLE_GENERATIVE_AI_API_KEY }}",
-              "MODEL": "gemini-2.5-flash"
-            }
+          env_data: |
+            VERSION: "${{ env.version }}"
+            STACK_NAME: "${{ env.stack-name }}"
+            TRAEFIK_HOST: "${{ env.traefik-host }}"
+            BASIC_AUTH: "${{ secrets.BASIC_AUTH }}"
+            GOOGLE_GENERATIVE_AI_API_KEY: "${{ secrets.GOOGLE_GENERATIVE_AI_API_KEY }}"
+            MODEL: "gemini-2.5-flash"
