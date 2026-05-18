@@ -35,7 +35,7 @@ app.post('/', async (req: Request, res: Response) => {
       const result = streamText({
         model: model,
         messages: modelMessages,
-        system: 'Please respond with short, unique, one sentence acknowledgements.',
+        // system: 'Please respond with short, unique, one sentence acknowledgements.',
         maxOutputTokens: 256,
       })
       writer.merge(result.toUIMessageStream())
