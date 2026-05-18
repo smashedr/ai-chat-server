@@ -16,7 +16,8 @@ on:
 env:
   traefik-host: ai-chat.cssnr.com
   stack-file: docker-compose-swarm.yaml
-  stack-name: ${{ github.repository_owner }}-${{ github.event.repository.name }}
+  #stack-name: ${{ github.repository_owner }}-${{ github.event.repository.name }}
+  stack-name: cssnr-${{ github.event.repository.name }}
   version: ${{ inputs.version || github.event.workflow_run.head_branch || github.ref_name }}
 
 jobs:
