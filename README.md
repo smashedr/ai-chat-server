@@ -20,6 +20,7 @@
 <img alt="AI Chat Server" align="right" width="128" height="auto" src="https://raw.githubusercontent.com/smashedr/ai-chat-server/refs/heads/master/.github/assets/logo.svg"></a>
 
 - [Setup](#Setup)
+  - [Client](#Client)
 - [Development](#Development)
 - [Support](#Support)
 - [Contributing](#Contributing)
@@ -51,6 +52,20 @@ You must also set the API key for the MODEL you select.
 | `ANTHROPIC_API_KEY`            | Claude Models |
 | `GOOGLE_GENERATIVE_AI_API_KEY` | Gemini Models |
 | `OPENAI_API_KEY`               | OpenAI Models |
+
+### Client
+
+To send System Instructions from the client add them to the body.
+
+```typescript
+const chat = new Chat({
+  transport: new DefaultChatTransport({
+    api: 'https://ai-chat-server.cssnr.com/',
+    headers: { Authorization: 'Basic Abc123=' },
+    body: { system: 'You are a helpful assistant.' },
+  }),
+})
+```
 
 ## Development
 

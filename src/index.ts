@@ -33,7 +33,8 @@ app.listen(port, () => {
 
 app.post('/', async (req: Request, res: Response) => {
   // console.log('req.headers:', req.headers)
-  const { messages } = req.body
+  const { messages, system } = req.body
+  // if (system) console.log('system:', system.substring(0, 96))
   const modelMessages = await convertToModelMessages(messages)
   console.log('modelMessages:', modelMessages.length)
   const stream = createUIMessageStream({
@@ -41,7 +42,7 @@ app.post('/', async (req: Request, res: Response) => {
       const result = streamText({
         model: model,
         messages: modelMessages,
-        system: process.env.INSTRUCTIONS,
+        system: system || process.env.INSTRUCTIONS,
         maxOutputTokens,
       })
       writer.merge(result.toUIMessageStream())
