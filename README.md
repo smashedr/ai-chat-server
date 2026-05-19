@@ -20,19 +20,43 @@
 <img alt="AI Chat Server" align="right" width="128" height="auto" src="https://raw.githubusercontent.com/smashedr/ai-chat-server/refs/heads/master/.github/assets/logo.svg"></a>
 
 - [Setup](#Setup)
-  - [Client](#Client)
+- [Client](#Client)
+  - [VitePress Plugin](#VitePress-Plugin)
 - [Development](#Development)
 - [Support](#Support)
 - [Contributing](#Contributing)
 
 AI Chat Server using the [AI SDK](https://ai-sdk.dev/).
 
+For a working demo see the VitePress Plugin Docs: https://smashedr.github.io/vitepress-chat/
+
+Using Docker Run.
+
 ```shell
 docker run --rm -p 80:3000 --name ai-chat-server \
-    -e MODEL=gpt-4.1-nano \
-    -e OPENAI_API_KEY=sk-proj-xxxx \
+    -e MODEL=gemini-2.5-flash \
+    -e GOOGLE_GENERATIVE_AI_API_KEY=xxx \
     ghcr.io/smashedr/ai-chat-server:latest
 ```
+
+With Docker Compose.
+
+```yaml
+services:
+  chat:
+    image: ghcr.io/smashedr/ai-chat-server:latest
+    environment:
+      MODEL: 'gpt-5.4-mini'
+      OPENAI_API_KEY: 'sk-proj-xxx'
+    ports:
+      - '80:3000'
+```
+
+For a Docker Swarm and Traefik example with Basic Auth see the [docker-compose-swarm.yaml](docker-compose-swarm.yaml).
+
+_Note: The `cssnr/docker-nginx-proxy` is not actually needed with Traefik, just an example._
+
+For a Portainer Deploy workflow see the [.github/workflows/deploy.yaml](.github/workflows/deploy.yaml).
 
 ## Setup
 
@@ -53,7 +77,7 @@ You must also set the API key for the MODEL you select.
 | `GOOGLE_GENERATIVE_AI_API_KEY` | Gemini Models |
 | `OPENAI_API_KEY`               | OpenAI Models |
 
-### Client
+## Client
 
 To send System Instructions from the client add them to the body.
 
@@ -67,12 +91,20 @@ const chat = new Chat({
 })
 ```
 
+### VitePress Plugin
+
+The client is currently available as a VitePress Plugin.
+
+- https://github.com/smashedr/vitepress-chat
+
+[![View Documentation](https://img.shields.io/badge/view_documentation-blue?style=for-the-badge&logo=googledocs&logoColor=white)](https://smashedr.github.io/vitepress-chat/)
+
 ## Development
 
 Set a model and api key variable.
 
 ```shell
-$env:MODEL = "gpt-5.4-mini"
+$env:MODEL = "gpt-4.1-nano"
 $env:OPENAI_API_KEY = "sk-proj-xxx"
 ```
 
@@ -83,6 +115,12 @@ npm run dev
 ```
 
 Point your client to: http://localhost:3000/
+
+To test the docker image run:
+
+```shell
+bash build.sh
+```
 
 ## Support
 
