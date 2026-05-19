@@ -28,8 +28,6 @@ fi
 
 [[ -z "${VERSION}" ]] && VERSION="${DEFAULT_VERSION}"
 
-echo "${REGISTRY_HOST}/${REGISTRY_USER}/${REGISTRY_REPO}:${VERSION}"
-
 #if [ -z "${USERNAME}" ];then
 #    read -rp "Username: " USERNAME
 #fi
@@ -53,3 +51,7 @@ docker build -t "${REGISTRY_HOST}/${REGISTRY_USER}/${REGISTRY_REPO}:${VERSION}" 
 
 
 #docker push "${REGISTRY_HOST}/${REGISTRY_USER}/${REGISTRY_REPO}:${VERSION}"
+
+echo "Built: ${REGISTRY_HOST}/${REGISTRY_USER}/${REGISTRY_REPO}:${VERSION}"
+
+echo "To test run: docker compose up"
