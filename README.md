@@ -20,17 +20,23 @@
 <img alt="AI Chat Server" align="right" width="128" height="auto" src="https://raw.githubusercontent.com/smashedr/ai-chat-server/refs/heads/master/.github/assets/logo.svg"></a>
 
 - [Setup](#Setup)
+  - [Configure](#Configure)
 - [Client](#Client)
   - [VitePress Plugin](#VitePress-Plugin)
 - [Development](#Development)
 - [Support](#Support)
 - [Contributing](#Contributing)
 
-AI Chat Server using the [AI SDK](https://ai-sdk.dev/).
+AI Chat Server built with the [AI SDK](https://ai-sdk.dev/).
 
-For a working demo see the VitePress Plugin Docs: https://smashedr.github.io/vitepress-chat/
+For a live demo see the VitePress Plugin docs: <https://smashedr.github.io/vitepress-chat/>
 
-Using Docker Run.
+- Client: https://github.com/smashedr/vitepress-chat
+- Server: https://github.com/smashedr/ai-chat-server
+
+## Setup
+
+Run with Docker.
 
 ```shell
 docker run --rm -p 80:3000 --name ai-chat-server \
@@ -39,7 +45,7 @@ docker run --rm -p 80:3000 --name ai-chat-server \
     ghcr.io/smashedr/ai-chat-server:latest
 ```
 
-With Docker Compose.
+Run with Docker Compose.
 
 ```yaml
 services:
@@ -52,13 +58,20 @@ services:
       - '80:3000'
 ```
 
-For a Docker Swarm and Traefik example with Basic Auth see the [docker-compose-swarm.yaml](docker-compose-swarm.yaml).
+Using Node.
 
-_Note: The `cssnr/docker-nginx-proxy` is not actually needed with Traefik, just an example._
+```shell
+npm i
+npm start
+```
+
+Note: you will need to export or add your environment variables to the `settings.env` file.
+
+For a Docker Swarm + Traefik + Basic Auth example see the [docker-compose-swarm.yaml](docker-compose-swarm.yaml).
 
 For a Portainer Deploy workflow see the [.github/workflows/deploy.yaml](.github/workflows/deploy.yaml).
 
-## Setup
+### Configure
 
 Environment Variables
 
@@ -101,25 +114,29 @@ The client is currently available as a VitePress Plugin.
 
 ## Development
 
-Set a model and api key variable.
+Set your environment variables in the `settings.env` file.
 
-```shell
-$env:MODEL = "gpt-4.1-nano"
-$env:OPENAI_API_KEY = "sk-proj-xxx"
-```
-
-Run the server.
+With node run.
 
 ```shell
 npm run dev
 ```
 
+With Docker run.
+
+```shell
+docker compose -f docker-compose-dev.yaml up --watch  --build
+```
+
 Point your client to: http://localhost:3000/
 
-To test the docker image run:
+### Building
+
+To build and test the docker image run.
 
 ```shell
 bash build.sh
+docker compose up
 ```
 
 ## Support

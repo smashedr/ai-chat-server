@@ -1,4 +1,5 @@
 import cors from 'cors'
+import dotenv from 'dotenv'
 import express, { Request, Response } from 'express'
 import { anthropic } from '@ai-sdk/anthropic'
 import { google } from '@ai-sdk/google'
@@ -10,7 +11,16 @@ import {
   convertToModelMessages,
 } from 'ai'
 
+dotenv.config({ path: 'settings.env' })
+
 console.log(`ai-chat-server: ${process.env.APP_VERSION}`)
+
+console.log('ANTHROPIC_API_KEY:', process.env.ANTHROPIC_API_KEY ? 'SET' : undefined)
+console.log('OPENAI_API_KEY:', process.env.OPENAI_API_KEY ? 'SET' : undefined)
+console.log(
+  'GOOGLE_GENERATIVE_AI_API_KEY:',
+  process.env.GOOGLE_GENERATIVE_AI_API_KEY ? 'SET' : undefined,
+)
 
 const maxOutputTokens = process.env.MAX_TOKENS
   ? Number.parseInt(process.env.MAX_TOKENS)
@@ -18,23 +28,22 @@ const maxOutputTokens = process.env.MAX_TOKENS
 console.log(`maxOutputTokens: ${maxOutputTokens}`)
 console.log(`system (instructions): ${process.env.INSTRUCTIONS}`)
 
+const model = getModel()
+console.log(`Loaded modelId: ${model.modelId}`)
+
 const app = express()
 const port = process.env.PORT || 3000 // NOSONAR
 
 app.use(express.json())
 app.use(cors())
 
-const model = getModel()
-console.log(`Loaded Model: ${model.modelId}`)
-
-app.listen(port, () => {
-  console.log(`Listening on PORT: ${port}`)
-})
+app.listen(port, () => console.log(`Listening on PORT: ${port}`))
 
 app.post('/', async (req: Request, res: Response) => {
   // console.log('req.headers:', req.headers)
+  // console.log('authorization:', req.headers.authorization)
   const { messages, system } = req.body
-  // if (system) console.log('system:', system.substring(0, 96))
+  // if (system) console.log('system:', system.substring(0, 512))
   const modelMessages = await convertToModelMessages(messages)
   console.log('modelMessages:', modelMessages.length)
   const stream = createUIMessageStream({
