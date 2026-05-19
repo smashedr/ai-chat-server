@@ -125,7 +125,7 @@ npm run dev
 With Docker run.
 
 ```shell
-docker compose -f docker-compose-dev.yaml up --watch  --build
+docker compose -f docker-compose-dev.yaml up --watch --build --remove-orphans
 ```
 
 Point your client to: http://localhost:3000/

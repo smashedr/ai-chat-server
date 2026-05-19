@@ -16,17 +16,17 @@
     "@ai-sdk/anthropic": "^3.0.78",
     "@ai-sdk/google": "^3.0.75",
     "@ai-sdk/openai": "^3.0.64",
-    "@ai-sdk/vue": "^3.0.184",
-    "ai": "^6.0.184",
+    "@ai-sdk/vue": "^3.0.185",
+    "ai": "^6.0.185",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
-    "tsx": "^4.22.2"
+    "tsx": "^4.22.3"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
-    "@types/node": "^25.9.0",
+    "@types/node": "^25.9.1",
     "nodemon": "^3.1.14",
     "prettier": "^3.8.3",
     "typescript": "^6.0.3"
