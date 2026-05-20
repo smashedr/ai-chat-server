@@ -29,8 +29,8 @@
 - [Support](#Support)
 - [Contributing](#Contributing)
 
-AI proxy Chat Server built with the [AI SDK](https://ai-sdk.dev/).
-Designed to work with the [VitePress Client Plugin](https://github.com/smashedr/vitepress-chat).
+AI proxy Chat Server designed to work with the [VitePress Client Plugin](https://github.com/smashedr/vitepress-chat)
+and built with the [AI SDK](https://ai-sdk.dev/).
 
 [![View Live Demo](https://img.shields.io/badge/view_live_demo-green?style=for-the-badge&logo=chatbot&logoColor=white)](https://smashedr.github.io/vitepress-chat/)
 
