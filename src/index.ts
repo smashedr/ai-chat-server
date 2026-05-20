@@ -31,6 +31,9 @@ console.log(`system (instructions): ${process.env.INSTRUCTIONS}`)
 const model = getModel()
 console.log(`Loaded modelId: ${model.modelId}`)
 
+const providerOptions = getProviderOptions(model.modelId)
+console.log('providerOptions:', providerOptions)
+
 const app = express()
 const port = process.env.PORT || 3000 // NOSONAR
 
@@ -53,6 +56,7 @@ app.post('/', async (req: Request, res: Response) => {
         messages: modelMessages,
         system: system || process.env.INSTRUCTIONS,
         maxOutputTokens,
+        providerOptions,
       })
       writer.merge(result.toUIMessageStream())
     },
@@ -64,10 +68,30 @@ app.post('/', async (req: Request, res: Response) => {
 function getModel() {
   if (!process.env.MODEL) throw new Error('Missing Environment Variable: MODEL')
   if (process.env.MODEL.startsWith('gemini')) {
+    if (!process.env.GOOGLE_GENERATIVE_AI_API_KEY)
+      throw new Error('Missing GOOGLE_GENERATIVE_AI_API_KEY')
     return google(process.env.MODEL)
   } else if (process.env.MODEL.includes('gpt')) {
+    if (!process.env.OPENAI_API_KEY) throw new Error('Missing OPENAI_API_KEY')
     return openai(process.env.MODEL)
   } else {
+    if (!process.env.ANTHROPIC_API_KEY) throw new Error('Missing ANTHROPIC_API_KEY')
     return anthropic(process.env.MODEL)
+  }
+}
+
+function getProviderOptions(modelId: string) {
+  let reasoningEffort = 'low'
+  if (/^gpt-5(-|$)/.test(modelId)) {
+    reasoningEffort = 'minimal'
+  } else if (modelId.startsWith('gpt-5.')) {
+    reasoningEffort = 'none'
+  }
+  return {
+    openai: {
+      serviceTier: 'flex',
+      reasoningEffort,
+      ...(modelId.includes('gpt-5-nano') && { include: ['reasoning.encrypted_content'] }),
+    },
   }
 }

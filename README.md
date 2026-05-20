@@ -1,4 +1,6 @@
 [![GitHub Release Version](https://img.shields.io/github/v/release/smashedr/ai-chat-server?logo=github)](https://github.com/smashedr/ai-chat-server/releases/latest)
+[![Image Latest](https://badges.cssnr.com/ghcr/tags/smashedr/ai-chat-server/latest)](https://github.com/smashedr/ai-chat-server/pkgs/container/ai-chat-server)
+[![Image Size](https://badges.cssnr.com/ghcr/size/smashedr/ai-chat-server)](https://github.com/smashedr/ai-chat-server/pkgs/container/ai-chat-server)
 [![Workflow Build](https://img.shields.io/github/actions/workflow/status/smashedr/ai-chat-server/build.yaml?logo=norton&logoColor=white&label=build)](https://github.com/smashedr/ai-chat-server/actions/workflows/build.yaml)
 [![Workflow Deploy](https://img.shields.io/github/actions/workflow/status/smashedr/ai-chat-server/deploy.yaml?logo=norton&logoColor=white&label=deploy)](https://github.com/smashedr/ai-chat-server/actions/workflows/deploy.yaml)
 [![Workflow Release](https://img.shields.io/github/actions/workflow/status/smashedr/ai-chat-server/release.yaml?logo=norton&logoColor=white&label=release)](https://github.com/smashedr/ai-chat-server/actions/workflows/release.yaml)
@@ -16,7 +18,7 @@
 
 # AI Chat Server
 
-<a title="AI Chat Server" href="https://github.com/smashedr/ai-chat-server?tab=readme-ov-file#readme" target="_blank">
+<a title="AI Chat Server" href="https://smashedr.github.io/vitepress-chat/" target="_blank">
 <img alt="AI Chat Server" align="right" width="128" height="auto" src="https://raw.githubusercontent.com/smashedr/ai-chat-server/refs/heads/master/.github/assets/logo.svg"></a>
 
 - [Setup](#Setup)
@@ -27,9 +29,10 @@
 - [Support](#Support)
 - [Contributing](#Contributing)
 
-AI Chat Server built with the [AI SDK](https://ai-sdk.dev/).
+AI proxy Chat Server designed to work with the [VitePress Client Plugin](https://github.com/smashedr/vitepress-chat)
+and built with the [AI SDK](https://ai-sdk.dev/).
 
-For a live demo see the VitePress Plugin docs: <https://smashedr.github.io/vitepress-chat/>
+[![View Live Demo](https://img.shields.io/badge/view_live_demo-green?style=for-the-badge&logo=chatbot&logoColor=white)](https://smashedr.github.io/vitepress-chat/)
 
 - Client: https://github.com/smashedr/vitepress-chat
 - Server: https://github.com/smashedr/ai-chat-server
@@ -45,7 +48,7 @@ docker run --rm -p 80:3000 --name ai-chat-server \
     ghcr.io/smashedr/ai-chat-server:latest
 ```
 
-Run with Docker Compose.
+With Docker Compose.
 
 ```yaml
 services:
@@ -65,11 +68,11 @@ npm i
 npm start
 ```
 
-Note: you will need to export or add your environment variables to the `settings.env` file.
+_Note: you will need to export or add your environment variables to the `settings.env` file._
 
-For a Docker Swarm + Traefik + Basic Auth example see the [docker-compose-swarm.yaml](docker-compose-swarm.yaml).
+For a Docker Swarm + Traefik + Basic Auth example see the [docker-compose-swarm.yaml](https://github.com/smashedr/ai-chat-server/blob/master/docker-compose-swarm.yaml).
 
-For a Portainer Deploy workflow see the [.github/workflows/deploy.yaml](.github/workflows/deploy.yaml).
+For a Portainer Deploy workflow see the [.github/workflows/deploy.yaml](https://github.com/smashedr/ai-chat-server/blob/master/.github/workflows/deploy.yaml).
 
 ### Configure
 
@@ -92,7 +95,7 @@ You must also set the API key for the MODEL you select.
 
 ## Client
 
-To send System Instructions from the client add them to the body.
+To send System Instructions from the client, add them to the body.
 
 ```typescript
 const chat = new Chat({
