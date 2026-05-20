@@ -12,9 +12,12 @@ WORKDIR /app
 
 COPY package.json package-lock.json ./
 COPY tsconfig.json ./
+
+RUN --mount=type=cache,target=/root/.npm npm ci --ignore-scripts
+
 COPY src/ ./src/
 
-RUN --mount=type=cache,target=/root/.npm npm ci
+RUN npm run build
 
 ARG VERSION="Dockerfile"
 ENV APP_VERSION="${VERSION}"

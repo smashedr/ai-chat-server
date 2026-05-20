@@ -1,16 +1,16 @@
 {
   "name": "ai-chat-server",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
   "type": "module",
   "main": "src/index.ts",
   "scripts": {
+    "build": "npx tsc",
     "dev": "nodemon --exec tsx src/index.ts",
     "prepare": "npm run build",
-    "build": "npx tsc",
-    "start": "node dist/index.js",
     "prettier:check": "npx prettier --check .",
-    "prettier:write": "npx prettier --write ."
+    "prettier:write": "npx prettier --write .",
+    "start": "node dist/index.js"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^3.0.78",
@@ -20,8 +20,7 @@
     "ai": "^6.0.185",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
-    "express": "^5.2.1",
-    "tsx": "^4.22.3"
+    "express": "^5.2.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
@@ -29,6 +28,7 @@
     "@types/node": "^25.9.1",
     "nodemon": "^3.1.14",
     "prettier": "^3.8.3",
+    "tsx": "^4.22.3",
     "typescript": "^6.0.3"
   }
 }
