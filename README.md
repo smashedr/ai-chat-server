@@ -18,7 +18,7 @@
 
 # AI Chat Server
 
-<a title="AI Chat Server" href="https://github.com/smashedr/ai-chat-server?tab=readme-ov-file#readme" target="_blank">
+<a title="AI Chat Server" href="https://smashedr.github.io/vitepress-chat/" target="_blank">
 <img alt="AI Chat Server" align="right" width="128" height="auto" src="https://raw.githubusercontent.com/smashedr/ai-chat-server/refs/heads/master/.github/assets/logo.svg"></a>
 
 - [Setup](#Setup)
@@ -29,9 +29,10 @@
 - [Support](#Support)
 - [Contributing](#Contributing)
 
-AI Chat Server built with the [AI SDK](https://ai-sdk.dev/).
+AI proxy Chat Server built with the [AI SDK](https://ai-sdk.dev/).
+Designed to work with the [VitePress Client Plugin](https://github.com/smashedr/vitepress-chat).
 
-For a live demo see the VitePress Plugin docs: <https://smashedr.github.io/vitepress-chat/>
+[![View Live Demo](https://img.shields.io/badge/view_live_demo-green?style=for-the-badge&logo=chatbot&logoColor=white)](https://smashedr.github.io/vitepress-chat/)
 
 - Client: https://github.com/smashedr/vitepress-chat
 - Server: https://github.com/smashedr/ai-chat-server
@@ -47,7 +48,7 @@ docker run --rm -p 80:3000 --name ai-chat-server \
     ghcr.io/smashedr/ai-chat-server:latest
 ```
 
-Run with Docker Compose.
+With Docker Compose.
 
 ```yaml
 services:
@@ -67,7 +68,7 @@ npm i
 npm start
 ```
 
-Note: you will need to export or add your environment variables to the `settings.env` file.
+_Note: you will need to export or add your environment variables to the `settings.env` file._
 
 For a Docker Swarm + Traefik + Basic Auth example see the [docker-compose-swarm.yaml](https://github.com/smashedr/ai-chat-server/blob/master/docker-compose-swarm.yaml).
 
@@ -94,7 +95,7 @@ You must also set the API key for the MODEL you select.
 
 ## Client
 
-To send System Instructions from the client add them to the body.
+To send System Instructions from the client, add them to the body.
 
 ```typescript
 const chat = new Chat({
