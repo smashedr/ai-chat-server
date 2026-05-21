@@ -75,3 +75,14 @@ jobs:
             OPENAI_API_KEY: "${{ secrets.OPENAI_API_KEY }}"
             MODEL: "gpt-5.4-nano"
             MAX_TOKENS: "1024"
+
+      ## https://render.com/docs/deploy-hooks#deploying-from-an-image-registry
+      #- name: "Deploy Image"
+      #  uses: cssnr/web-request-action@v2
+      #  continue-on-error: true
+      #  env:
+      #    version: ${{ env.version == 'master' && 'latest' || env.version }}
+      #  with:
+      #    url: ${{ secrets.RENDER_HOOK }}
+      #    params: |
+      #      imgURL: ghcr.io/${{ github.repository }}:${{ env.version }}

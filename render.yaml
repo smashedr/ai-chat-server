@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: ai-chat-server
+    plan: free
+    runtime: image
+    image:
+      url: ghcr.io/smashedr/ai-chat-server:latest
+    dockerCommand: npm start
+    #healthCheckPath: /app-health-check

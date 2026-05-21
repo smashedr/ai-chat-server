@@ -37,6 +37,14 @@ and built with the [AI SDK](https://ai-sdk.dev/).
 - Client: https://github.com/smashedr/vitepress-chat
 - Server: https://github.com/smashedr/ai-chat-server
 
+### Features
+
+- Works with Claude, OpenAI and Gemini
+- Live Stream Results to Client
+- Automatic Input Token Caching
+- Automatic API Retry on Failure
+- Deploy with Docker or Node
+
 ## Setup
 
 Run with Docker.
