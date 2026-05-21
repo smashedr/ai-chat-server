@@ -47,6 +47,8 @@ and built with the [AI SDK](https://ai-sdk.dev/).
 
 ## Setup
 
+[![Deploy to Render](https://img.shields.io/badge/Deploy_to_Render-4351E8?style=for-the-badge&logo=render)](https://render.com/deploy?repo=https://github.com/smashedr/ai-chat-server)
+
 Run with Docker.
 
 ```shell
