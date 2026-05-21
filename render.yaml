@@ -9,7 +9,7 @@ services:
     #healthCheckPath: /app-health-check
     envVars:
       - key: MODEL
-        sync: false
+        value: gemini-2.5-flash
       - key: ANTHROPIC_API_KEY
         sync: false
       - key: GOOGLE_GENERATIVE_AI_API_KEY
