@@ -86,5 +86,6 @@ jobs:
         uses: cssnr/web-request-action@v2
         with:
           url: ${{ secrets.RENDER_HOOK }}
+          method: GET
           params: |
             ref: ${{ github.sha }}
