@@ -82,10 +82,9 @@ jobs:
       #      imgURL: ghcr.io/${{ github.repository }}:${{ env.version }}
 
       - name: "Deploy Branch"
-        if: ${{ !inputs.version }}
+        #if: ${{ !inputs.version }}
         uses: cssnr/web-request-action@v2
         with:
           url: ${{ secrets.RENDER_HOOK }}
-          method: GET
           params: |
             ref: ${{ github.sha }}
