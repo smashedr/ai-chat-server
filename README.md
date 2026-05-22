@@ -43,7 +43,7 @@ Built with the [AI SDK](https://ai-sdk.dev/).
 - Works with Claude, OpenAI and Gemini
 - Live Stream Results to Client
 - Automatic Input Token Caching
-- Automatic API Retry on Failure
+- Automatic Retry on API Failures
 - Deploy with Docker or Node
 
 ## Setup
