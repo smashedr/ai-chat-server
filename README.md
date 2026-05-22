@@ -129,7 +129,7 @@ The client is currently available as a VitePress Plugin.
 
 Set your environment variables in the `settings.env` file.
 
-With node run.
+With Node run.
 
 ```shell
 npm run dev
