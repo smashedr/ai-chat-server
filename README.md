@@ -87,7 +87,9 @@ For a Portainer Deploy workflow see the [.github/workflows/deploy.yaml](https://
 
 ### Configure
 
-Environment Variables
+The only required variables is the `MODEL` and the API Key Variable for that model.
+
+Environment Variables.
 
 | Variable              | Req. | Default | Description          |
 | :-------------------- | :--: | :------ | :------------------- |
@@ -95,9 +97,10 @@ Environment Variables
 | `MAX_TOKENS`          |  -   | -       | Max Output Tokens    |
 | `INSTRUCTIONS`        |  -   | -       | System Instructions  |
 | `AI_SDK_LOG_WARNINGS` |  -   | -       | Disable SDK Warnings |
-| `PORT`                |  -   | 3000    | Server Port          |
+| `CORS_ORIGINS`        |  -   | -       | CORS Origins (CSV)   |
+| `PORT`                |  -   | `3000`  | Server Port          |
 
-You must also set the API key for the MODEL you select.
+You must also set the API key for the `MODEL` you select.
 
 | Variable                       | Description   |
 | :----------------------------- | :------------ |
