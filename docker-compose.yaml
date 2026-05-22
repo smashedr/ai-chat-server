@@ -7,6 +7,12 @@ services:
     environment:
       SERVICE_NAME: "app"
       SERVICE_PORT: "3000"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf localhost:80/health-check || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
     depends_on:
       - app
     ports:
@@ -15,3 +21,9 @@ services:
   app:
     image: ghcr.io/smashedr/ai-chat-server:latest
     env_file: settings.env
+    #healthcheck:
+    #  test: ["CMD-SHELL", "curl -sf localhost:3000/app-health-check || exit 1"]
+    #  interval: 30s
+    #  timeout: 10s
+    #  retries: 3
+    #  start_period: 30s

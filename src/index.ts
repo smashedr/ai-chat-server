@@ -42,6 +42,8 @@ app.use(cors())
 
 app.listen(port, () => console.log(`Listening on PORT: ${port}`))
 
+// app.get('/app-health-check', (_req, res) => res.sendStatus(200))
+
 app.post('/', async (req: Request, res: Response) => {
   // console.log('req.headers:', req.headers)
   // console.log('authorization:', req.headers.authorization)
