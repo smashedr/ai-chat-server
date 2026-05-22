@@ -15,15 +15,20 @@ dotenv.config({ path: 'settings.env' })
 
 console.log(`ai-chat-server: ${process.env.APP_VERSION}`)
 
-if (process.env.AI_SDK_LOG_WARNINGS) globalThis.AI_SDK_LOG_WARNINGS = false
-console.log('AI_SDK_LOG_WARNINGS:', process.env.AI_SDK_LOG_WARNINGS)
-
 console.log('ANTHROPIC_API_KEY:', process.env.ANTHROPIC_API_KEY ? 'SET' : undefined)
 console.log('OPENAI_API_KEY:', process.env.OPENAI_API_KEY ? 'SET' : undefined)
 console.log(
   'GOOGLE_GENERATIVE_AI_API_KEY:',
   process.env.GOOGLE_GENERATIVE_AI_API_KEY ? 'SET' : undefined,
 )
+
+if (process.env.AI_SDK_LOG_WARNINGS) globalThis.AI_SDK_LOG_WARNINGS = false
+console.log('AI_SDK_LOG_WARNINGS:', process.env.AI_SDK_LOG_WARNINGS)
+
+const corsOrigins = process.env.CORS_ORIGINS?.split(/[, \n\r]+/)
+  .map((s) => s.trim())
+  .filter(Boolean)
+console.log('corsOrigins:', corsOrigins)
 
 const maxOutputTokens = process.env.MAX_TOKENS
   ? Number.parseInt(process.env.MAX_TOKENS)
@@ -41,7 +46,8 @@ const app = express()
 const port = process.env.PORT || 3000 // NOSONAR
 
 app.use(express.json())
-app.use(cors())
+
+app.use(corsOrigins?.length ? cors({ origin: corsOrigins }) : cors())
 
 app.listen(port, () => console.log(`Listening on PORT: ${port}`))
 
