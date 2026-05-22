@@ -25,7 +25,7 @@ console.log(
 if (process.env.AI_SDK_LOG_WARNINGS) globalThis.AI_SDK_LOG_WARNINGS = false
 console.log('AI_SDK_LOG_WARNINGS:', process.env.AI_SDK_LOG_WARNINGS)
 
-const corsOrigins = process.env.CORS_ORIGINS?.split(',')
+const corsOrigins = process.env.CORS_ORIGINS?.split(/[, \n\r]+/)
   .map((s) => s.trim())
   .filter(Boolean)
 console.log('corsOrigins:', corsOrigins)

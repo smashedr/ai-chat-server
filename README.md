@@ -97,7 +97,7 @@ Environment Variables.
 | `MAX_TOKENS`          |  -   | -       | Max Output Tokens    |
 | `INSTRUCTIONS`        |  -   | -       | System Instructions  |
 | `AI_SDK_LOG_WARNINGS` |  -   | -       | Disable SDK Warnings |
-| `CORS_ORIGINS`        |  -   | -       | CORS Origins (CSV)   |
+| `CORS_ORIGINS`        |  -   | -       | Allowed CORS Origins |
 | `PORT`                |  -   | `3000`  | Server Port          |
 
 You must also set the API key for the `MODEL` you select.
