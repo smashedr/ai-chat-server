@@ -15,6 +15,9 @@ dotenv.config({ path: 'settings.env' })
 
 console.log(`ai-chat-server: ${process.env.APP_VERSION}`)
 
+if (process.env.AI_SDK_LOG_WARNINGS) globalThis.AI_SDK_LOG_WARNINGS = false
+console.log('AI_SDK_LOG_WARNINGS:', process.env.AI_SDK_LOG_WARNINGS)
+
 console.log('ANTHROPIC_API_KEY:', process.env.ANTHROPIC_API_KEY ? 'SET' : undefined)
 console.log('OPENAI_API_KEY:', process.env.OPENAI_API_KEY ? 'SET' : undefined)
 console.log(
