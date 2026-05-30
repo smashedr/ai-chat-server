@@ -7,6 +7,7 @@ services:
     environment:
       SERVICE_NAME: "app"
       SERVICE_PORT: "3000"
+      #BASIC_AUTH: ${BASIC_AUTH}
     healthcheck:
       test: ["CMD-SHELL", "curl -sf localhost:80/health-check || exit 1"]
       interval: 30s
@@ -16,7 +17,7 @@ services:
     depends_on:
       - app
     ports:
-      - "80:80"
+      - "${PORT:-80}:80"
 
   app:
     image: ghcr.io/smashedr/ai-chat-server:latest
