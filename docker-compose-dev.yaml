@@ -41,8 +41,6 @@ services:
         limits:
           cpus: "2.0"
           memory: 256M
-    depends_on:
-      - redis
     #volumes:
     #  - ${APP_FILES:-./src}:/app/src
     develop:
@@ -54,18 +52,3 @@ services:
           path: ./package-lock.json
         - action: rebuild
           path: ./docker-compose-dev.yaml
-
-  redis:
-    image: redis:6-alpine
-    command: "redis-server --appendonly yes"
-    deploy:
-      replicas: 1
-      resources:
-        limits:
-          cpus: "1.0"
-          memory: 64M
-    volumes:
-      - redis_data:/data
-
-volumes:
-  redis_data:

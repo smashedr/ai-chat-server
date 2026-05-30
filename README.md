@@ -50,7 +50,7 @@ Built with the [AI SDK](https://ai-sdk.dev/).
 
 [![Deploy to Render](https://img.shields.io/badge/Deploy_to_Render-4351E8?style=for-the-badge&logo=render)](https://render.com/deploy?repo=https://github.com/smashedr/ai-chat-server)
 
-Run with Docker.
+With Docker.
 
 ```shell
 docker run --rm -p 80:3000 --name ai-chat-server \
@@ -72,7 +72,7 @@ services:
       - '80:3000'
 ```
 
-Using Node.
+With Node.
 
 ```shell
 npm i
@@ -132,7 +132,8 @@ The client is currently available as a VitePress Plugin.
 
 ## Development
 
-Set your environment variables in the `settings.env` file.
+Set your environment variables in the `settings.env` file.  
+In all cases you can set the `PORT` environment variable.
 
 With Node run.
 
@@ -140,13 +141,15 @@ With Node run.
 npm run dev
 ```
 
-With Docker run.
+Point your client to: http://localhost:3000/
+
+With Docker compose.
 
 ```shell
 docker compose -f docker-compose-dev.yaml up --watch --build --remove-orphans
 ```
 
-Point your client to: http://localhost:3000/
+Point your client to: http://localhost/
 
 ### Building
 
